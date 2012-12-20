@@ -1,0 +1,4 @@
+.gradle
+lib/*.jar
+target
+www-test
