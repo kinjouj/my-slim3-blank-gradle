@@ -124,6 +124,13 @@ def eclipseAptSettings_factorypath = {
     w.close()
 }
 
+tasks.eclipseClasspath {
+    doFirst {
+        def f = file("${buildDir}/resources/apt");
+        f.mkdirs();
+    }
+}
+
 tasks.eclipseJdt {
     doFirst {
         eclipseAptSettings()
@@ -133,8 +140,10 @@ tasks.eclipseJdt {
 
 eclipse.classpath.file {
     whenMerged { classpath ->
-        classpath.entries.findAll {
-            entry -> entry.kind == "output"
-        }*.path = "target/classes"
+        classpath.entries.findAll {}*.path = "${buildDir}/resources/apt"
+
+        classpath.entries.findAll { entry ->
+            entry.kind == "output"
+        }*.path = "${buildDir}/classes"
     }
 }
