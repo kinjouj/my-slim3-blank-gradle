@@ -1,4 +1,5 @@
-buildDir = "target"
+targetDir = "target"
+buildDir = targetDir
 
 repositories {
     mavenCentral()
@@ -144,6 +145,6 @@ eclipse.classpath.file {
 
         classpath.entries.findAll { entry ->
             entry.kind == "output"
-        }*.path = "${buildDir}/classes"
+        }*.path = "/${project.name}/${targetDir}/classes"
     }
 }
