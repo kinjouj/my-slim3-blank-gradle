@@ -1,5 +1,5 @@
-targetDir = "target"
-buildDir = targetDir
+ext.targetDir = "target"
+project.buildDir = ext.targetDir
 
 repositories {
     mavenCentral()
@@ -42,6 +42,8 @@ dependencies {
     compile "javax.servlet:servlet-api:2.5"
     compile "com.google.appengine:appengine-api-1.0-sdk:1.7.3"
     compile "org.slim3:slim3:1.0.16"
+    compile "org.twitter4j:twitter4j-appengine:3.0.3"
+    compile "net.arnx:jsonic:1.3.0"
 
     // gaeSdk "com.google.appengine:appengine-java-sdk:1.7.3"
 
@@ -116,7 +118,7 @@ def eclipseAptSettings_factorypath = {
     xml."factorypath"() {
         "factorypathentry"(
             kind: "WKSPJAR",
-            id: "/${project.name}/lib/slim3-gen-1.0.13.jar",
+            id: "/${project.name}/lib/slim3-gen.jar",
             enabled: true,
             runInBatchMode: false
         )
@@ -145,6 +147,6 @@ eclipse.classpath.file {
 
         classpath.entries.findAll { entry ->
             entry.kind == "output"
-        }*.path = "/${project.name}/${targetDir}/classes"
+        }*.path = "/${project.name}/${ext.targetDir}/classes"
     }
 }
