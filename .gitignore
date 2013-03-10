@@ -1,4 +1,8 @@
 .gradle
+.classpath
+.factorypath
+.project
+.settings
 lib/*.jar
 target
 www-test
