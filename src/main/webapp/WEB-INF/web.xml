@@ -69,11 +69,6 @@
         <load-on-startup>1</load-on-startup>
     </servlet>
 
-    <servlet>
-        <servlet-name>KtrWjrServiceServlet</servlet-name>
-        <servlet-class>bufferings.ktr.wjr.server.service.KtrWjrServiceServlet</servlet-class>
-    </servlet>
-
     <servlet-mapping>
         <servlet-name>SessionCleanup</servlet-name>
         <url-pattern>/_ah/session/cleanup</url-pattern>
@@ -84,11 +79,6 @@
         <url-pattern>/slim3/gtx</url-pattern>
     </servlet-mapping>
 
-    <servlet-mapping>
-        <servlet-name>KtrWjrServiceServlet</servlet-name>
-        <url-pattern>/ktrwjr/ktrwjr/ktrwjr.s3gwt</url-pattern>
-    </servlet-mapping>
-
     <security-constraint>
         <web-resource-collection>
             <url-pattern>*.jsp</url-pattern>
@@ -97,6 +87,7 @@
         </auth-constraint>
     </security-constraint>
 
+    <!--
     <security-constraint>
         <web-resource-collection>
             <url-pattern>/</url-pattern>
@@ -105,6 +96,7 @@
             <role-name>*</role-name>
         </auth-constraint>
     </security-constraint>
+    -->
 
     <security-constraint>
         <web-resource-collection>
@@ -145,15 +137,6 @@
     <security-constraint>
         <web-resource-collection>
             <url-pattern>/slim3/gtx/*</url-pattern>
-        </web-resource-collection>
-        <auth-constraint>
-            <role-name>admin</role-name>
-        </auth-constraint>
-    </security-constraint>
-
-    <security-constraint>
-        <web-resource-collection>
-            <url-pattern>/ktrwjr/*</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <role-name>admin</role-name>
