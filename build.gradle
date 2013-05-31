@@ -97,12 +97,8 @@ def eclipseAptSettings = {
 }
 
 def eclipseAptSettings_factorypath = {
-    copy {
-        from(configurations.aptCompile) {
-            include "slim3-gen*"
-        }
-
-        into "lib"
+    def slim3Gen = configurations.aptCompile.find {
+        it.name.startsWith("slim3-gen")
     }
 
     def f = file(".factorypath")
@@ -113,8 +109,8 @@ def eclipseAptSettings_factorypath = {
 
     xml."factorypath"() {
         "factorypathentry"(
-            kind: "WKSPJAR",
-            id: "/${project.name}/lib/slim3-gen-1.0.16.jar",
+            kind: "EXTJAR",
+            id: slim3Gen,
             enabled: true,
             runInBatchMode: false
         )
